@@ -193,9 +193,9 @@ unset_context() {
 
 main() {
   if [[ -z "${KUBECTL:-}" ]]; then
-    if hash kubectl 2>/dev/null; then
+    if command -v kubectl >/dev/null 2>&1; then
       KUBECTL=kubectl
-    elif hash kubectl.exe  2>/dev/null; then
+  elif command -v kubectl.exe >/dev/null 2>&1; then
       KUBECTL=kubectl.exe
     else
       echo >&2 "kubectl is not installed"
